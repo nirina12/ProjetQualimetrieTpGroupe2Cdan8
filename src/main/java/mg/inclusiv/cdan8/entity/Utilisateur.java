@@ -1,7 +1,5 @@
 package mg.inclusiv.cdan8.entity;
 
-import java.io.Serializable;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Entity
-public class Contact implements Serializable {
+public class Utilisateur {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,5 +21,8 @@ public class Contact implements Serializable {
     @Column
     private String prenom;
     @Column
-    private String adress;
+    private String mail;
+    @Column
+    private String password;
+    
 }
