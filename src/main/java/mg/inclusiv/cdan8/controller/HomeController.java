@@ -29,7 +29,6 @@ public class HomeController {
     @Autowired
     UtilisateurRepository utilisateurRepository;
 
-
     @RequestMapping("/")
     public String home(Model model) {
         //String message = "Hello, Thymeleaf!";
@@ -38,15 +37,15 @@ public class HomeController {
     }
 
     @PostMapping("/authentification")
-    public String authentification(@RequestParam String mailUser,@RequestParam String password, HttpSession session,Model model ) {
+    public RedirectView authentification(@RequestParam String mailUser,@RequestParam String password, HttpSession session,Model model ) {
         Utilisateur currentUser = authentUser(mailUser, password);
         if (currentUser!=null) {
             session.setAttribute("user", currentUser.toString());
             model.addAttribute("utilisateur", currentUser.toString());
-            return "dashboard";
+            return new RedirectView("/dashboard");
         }else{
             model.addAttribute("NotificationError", "Erreur D'authentification");
-            return "index";
+            return new RedirectView("/");
         }
     }
 

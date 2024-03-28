@@ -15,8 +15,8 @@ public class Utilisateur {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @Column(name = "name")
+    private Long utilisateur_id;
+    @Column
     private String name;
     @Column
     private String lastname;
