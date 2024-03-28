@@ -20,7 +20,7 @@ public class TacheService {
     public void save(Tache tache){
         tacheRepository.save(tache);
     }
-    public Tache get(long id){
+    public Tache update(long id){
         return  tacheRepository.findById(id).get();
     }
     public void delete(long id){
