@@ -60,7 +60,7 @@ public class HomeController {
         List <Utilisateur> users= utilisateurRepository.authentificationUser(emailUser, password);
         
         Utilisateur currentUser = null;
-        if (users.size()!= 0) {
+        if (users.isEmpty()) {
             currentUser=users.get(0);
         }
         
@@ -69,21 +69,25 @@ public class HomeController {
 
     @GetMapping ("/inscription")
     public String inscription(Model model,Utilisateur utilisateur){
-        model.addAttribute("message","");
+        model.addAttribute("message","Bonjour");
         return "inscription";
     }
 
     @PostMapping ("/inscriptionUtilisateur")
     public RedirectView inscription(@ModelAttribute Utilisateur utilisateur,@RequestParam String confirmPassword, Model model ) {
         //Utilisateur currentUser = authentUser(mailUser, password);
-        if (utilisateur.getPassword()==confirmPassword) {
-
+        System.out.println(utilisateur.toString());
+        System.out.println(confirmPassword);
+        if (utilisateur.getPassword().equals(confirmPassword)) {
+            System.out.println("oui");
             model.addAttribute("message","Succés///");
 
             utilisateurRepository.save(utilisateur);
+            //utilisateurRepository.inscriptionUtilisateur(utilisateur.getEmail(), utilisateur.getLastname(), utilisateur.getName(), utilisateur.getPassword());
             ;  //model.addAttribute("utilisateur", currentUser.toString());
             return new RedirectView("/");
         }else{
+            System.out.println("non");
             model.addAttribute("NotificationError", "Erreur D'authentification");
 
             return new RedirectView("/");
