@@ -14,4 +14,6 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur,Long> {
     
     @Query("SELECT u FROM Utilisateur u WHERE u.email = ?1 AND u.password = ?2")
     List<Utilisateur> authentificationUser(String emailUser, String pwd);
+    //@Query("INSERT INTO utilisateur (email,lastname,name,password) values(u)")
+    void inscriptionUser(Utilisateur utilisateur);
 }

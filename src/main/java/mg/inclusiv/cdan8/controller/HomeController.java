@@ -67,4 +67,26 @@ public class HomeController {
         return currentUser;
     }
 
-}
+    @GetMapping ("/inscription")
+    public String inscription(Model model,Utilisateur utilisateur){
+        model.addAttribute("message","");
+        return "inscription";
+    }
+
+    @PostMapping ("/inscriptionUtilisateur")
+    public RedirectView inscription(@ModelAttribute Utilisateur utilisateur,@RequestParam String confirmPassword, Model model ) {
+        //Utilisateur currentUser = authentUser(mailUser, password);
+        if (utilisateur.getPassword()==confirmPassword) {
+
+            model.addAttribute("message","Succés///");
+
+            utilisateurRepository.save(utilisateur);
+            ;  //model.addAttribute("utilisateur", currentUser.toString());
+            return new RedirectView("/");
+        }else{
+            model.addAttribute("NotificationError", "Erreur D'authentification");
+
+            return new RedirectView("/");
+        }
+    }
+
