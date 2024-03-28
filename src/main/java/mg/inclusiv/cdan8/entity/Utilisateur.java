@@ -16,12 +16,12 @@ public class Utilisateur {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name = "nom")
-    private String nom;
+    @Column(name = "name")
+    private String name;
     @Column
-    private String prenom;
+    private String lastname;
     @Column
-    private String mail;
+    private String email;
     @Column
     private String password;
     
