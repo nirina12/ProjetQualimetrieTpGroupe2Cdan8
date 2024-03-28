@@ -88,5 +88,5 @@ public class HomeController {
 
             return new RedirectView("/");
         }
-    }
+    }}
 
