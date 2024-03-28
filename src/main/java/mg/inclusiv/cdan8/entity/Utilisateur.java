@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class Utilisateur {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long utilisateur_id;
     @Column
     private String name;
