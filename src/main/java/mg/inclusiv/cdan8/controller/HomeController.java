@@ -1,19 +1,64 @@
 package mg.inclusiv.cdan8.controller;
 
-import org.springframework.stereotype.Controller;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
+
+import jakarta.servlet.http.HttpSession;
+import mg.inclusiv.cdan8.entity.Utilisateur;
+import mg.inclusiv.cdan8.repository.UtilisateurRepository;
 
 @RestController
 @RequestMapping("/home")
 public class HomeController {
 
-    @GetMapping("/")
+    @Autowired
+    UtilisateurRepository utilisateurRepository;
+
+    @RequestMapping("/")
     public String home(Model model) {
-        String message = "Hello, Thymeleaf!";
-        model.addAttribute("message", message);
+        //String message = "Hello, Thymeleaf!";
+        model.addAttribute("utilisateur", new Utilisateur());
         return "index";
     }
+
+    @PostMapping("/authentification")
+    public RedirectView authentification(@RequestParam String mailUser,@RequestParam String password, HttpSession session,Model model ) {
+        Utilisateur currentUser = authentUser(mailUser, password);
+        if (currentUser!=null) {
+            session.setAttribute("user", currentUser.toString());
+            model.addAttribute("utilisateur", currentUser.toString());
+            return new RedirectView("/dashboard");
+        }else{
+            model.addAttribute("NotificationError", "Erreur D'authentification");
+            return new RedirectView("/");
+        }
+    }
+
+    @GetMapping("/logout")
+    public RedirectView logout(HttpSession session) {
+        // Invalider la session de l'utilisateur
+        session.invalidate();
+        return new RedirectView("/") ;
+    }
+
+    private Utilisateur authentUser(String emailUser, String password){
+        List <Utilisateur> users= utilisateurRepository.authentificationUser(emailUser, password);
+        
+        Utilisateur currentUser = null;
+        if (users.size()!= 0) {
+            currentUser=users.get(0);
+        }
+        
+        return currentUser;
+    }
+
 }
+
