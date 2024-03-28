@@ -44,7 +44,7 @@ public class HomeController {
         if (currentUser!=null) {
             session.setAttribute("user", currentUser.toString());
             model.addAttribute("utilisateur", currentUser.toString());
-            return new RedirectView("/dashboard");
+            return new RedirectView("/dashboardtache");
         }else{
             model.addAttribute("NotificationError", "Erreur D'authentification");
             return new RedirectView("/");
