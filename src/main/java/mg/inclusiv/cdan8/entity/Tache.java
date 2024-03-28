@@ -18,7 +18,7 @@ public class Tache {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(name = "name")
-    private String titre;
+    private String title;
     @Column
     private String description;
     @Column
