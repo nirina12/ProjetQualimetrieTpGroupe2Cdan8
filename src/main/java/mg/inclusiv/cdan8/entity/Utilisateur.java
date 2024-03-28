@@ -16,7 +16,7 @@ public class Utilisateur {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name = "nom")
+    @Column(name = "name")
     private String name;
     @Column
     private String lastname;

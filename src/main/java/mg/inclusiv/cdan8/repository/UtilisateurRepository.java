@@ -12,6 +12,6 @@ import mg.inclusiv.cdan8.entity.Utilisateur;
 @Repository
 public interface UtilisateurRepository extends JpaRepository<Utilisateur,Long> {
     
-    @Query("SELECT u FROM Utilisateur u WHERE u.mail = ?1 AND u.password = ?2")
+    @Query("SELECT u FROM Utilisateur u WHERE u.email = ?1 AND u.password = ?2")
     List<Utilisateur> authentificationUser(String emailUser, String pwd);
 }
