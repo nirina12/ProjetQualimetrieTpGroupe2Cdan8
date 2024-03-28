@@ -17,11 +17,11 @@ public class Utilisateur {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(name = "nom")
-    private String nom;
+    private String name;
     @Column
-    private String prenom;
+    private String lastname;
     @Column
-    private String mail;
+    private String email;
     @Column
     private String password;
     

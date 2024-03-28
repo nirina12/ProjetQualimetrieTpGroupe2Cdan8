@@ -61,9 +61,8 @@ public class HomeController {
         Utilisateur currentUser = null;
         if (users.size()!= 0) {
             currentUser=users.get(0);
-            System.out.println("oui");
         }
-        System.out.println("non");
+        
         return currentUser;
     }
 
