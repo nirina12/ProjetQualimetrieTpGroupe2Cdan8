@@ -20,8 +20,8 @@ public class TachesController {
     TacheService tacheService;
     @GetMapping("")
     public String viewhome(Model model) {
-        List<Tache> tacheList= tacheService.tacheList();
-        model.addAttribute("tacheList", tacheList);
+        //List<Tache> tacheList= tacheService.tacheList();
+        //model.addAttribute("tacheList", tacheList);
         return "dashboard";
     }
 }
