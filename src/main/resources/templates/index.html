@@ -38,26 +38,27 @@
                 <div class="Notification-error" th:text="${NotificationError}">
                     erreur
                 </div>
-                <form th:action="@{/authentification}" th:object="${utilisateur}" th:method="post">
+                <form id="loginForm" th:action="@{/authentification}" th:object="${utilisateur}" th:method="post">
                     
                     <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Email address</label>
-                      <input type="email" name="mailUser" class="form-control"  />
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" name="mailUser" class="form-control"  />
                       <!-- th:field="*{mail}" -->
                     </div>
                     <div class="mb-3">
-                      <label for="exampleInputPassword1" class="form-label">Password</label>
-                      <input type="password" class="form-control" name="password">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password">
                       <!-- th:field="*{password}" -->
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" th:action="@{/dashboard}" class="btn btn-primary">Submit</button>
                     <small><a href="">S'inscrire ?</a></small>
-                  </form>
+                </form>
+
             </div>
         </section>
-        
       </div>
     
 </body>
 <script src="/Assets/bootstrap-5.3.2-dist/js/bootstrap.bundle.js"></script>
+
 </html>
