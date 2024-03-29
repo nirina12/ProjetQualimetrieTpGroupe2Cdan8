@@ -1,6 +1,5 @@
 package mg.inclusiv.cdan8.controller;
 
-
 import java.util.List;
 
 import mg.inclusiv.cdan8.repository.TacheRepository;
@@ -9,11 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import mg.inclusiv.cdan8.Services.TacheService;
 import mg.inclusiv.cdan8.entity.Tache;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 @RequestMapping("/dashboardtache")
@@ -27,6 +24,7 @@ public class TachesController {
         model.addAttribute("tacheList", tacheList);
         return "dashboard";
     }
+
     @PostMapping("/save")
     public void saveTache(Tache tache){
         tacheRepository.save(tache);
