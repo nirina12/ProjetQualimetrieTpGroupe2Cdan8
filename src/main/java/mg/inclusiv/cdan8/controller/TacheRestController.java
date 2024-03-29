@@ -1,0 +1,45 @@
+package mg.inclusiv.cdan8.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import mg.inclusiv.cdan8.entity.Tache;
+import mg.inclusiv.cdan8.repository.TacheRepository;
+
+
+@RestController
+@RequestMapping("/api/tache")
+public class TacheRestController {
+    
+    @Autowired
+    TacheRepository tacheRepository;
+
+    @GetMapping("list")
+    public List<Tache> listContact() {
+        return tacheRepository.findAll();
+    }
+
+    @PostMapping("add")
+    public Tache addContact(@RequestBody Tache contact) {
+        return tacheRepository.save(contact);
+    }
+
+    @PutMapping("update")
+    public Tache updateContact(@RequestBody Tache contact) {
+        return tacheRepository.save(contact);
+    }
+
+    @DeleteMapping("delete/{id}")
+    public void deleteContact(@PathVariable Long id) {
+        tacheRepository.deleteById(id);
+    }
+}

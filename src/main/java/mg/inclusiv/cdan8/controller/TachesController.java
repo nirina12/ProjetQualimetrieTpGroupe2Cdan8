@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @Controller
-@RequestMapping("/dashboard")
+@RequestMapping("/dashboardtache")
 public class TachesController {
     @Autowired
     TacheRepository tacheRepository;
 
-    @GetMapping("/list")
+    @GetMapping("listTache")
     public String listTache(Model model) {
         List<Tache> tacheList = tacheRepository.findAll();
         model.addAttribute("tacheList", tacheList);

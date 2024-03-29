@@ -1,76 +1,217 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
     <title>Document</title>
-</head>
-<body>
-<div class="container">
-    <h1 class="text-center my-4">LISTE DES TACHES</h1>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center my-4">LISTE DES TACHES</h1>
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop"
+      >
         <a th:src="@{/create}" class="btn btn-primary">CREATE</a>
-    </button>
+      </button>
 
-    <table class="table">
+      <table class="table">
         <thead class="table-header table-sub-heading-color">
-        <tr>
+          <tr>
             <th>Title</th>
             <th>Description</th>
             <th>Status</th>
             <th>Actions</th>
-        </tr>
+          </tr>
         </thead>
         <tbody class="table-info table-active table-sub-heading-color">
-        <tr th:each="tache : ${tacheList}">
+          <tr th:each="tache : ${tacheList}">
             <td th:text="${tache.title}"></td>
             <td th:text="${tache.description}"></td>
             <td>
-                <input type="checkbox" th:checked="${tache.status}">
+              <input type="checkbox" th:checked="${tache.status}" />
             </td>
             <td>
-                <a th:src="@{'/update/' + ${tache.tache_id}}" class="btn btn-primary">Update</a>
-                <a th:src="@{'/delete/' + ${tache.tache_id}}" class="btn btn-danger">Delete</a>
+              <a
+                th:src="@{'/update/' + ${tache.tache_id}}"
+                class="btn btn-primary"
+                >Update</a
+              >
+              <a
+                th:src="@{'/delete/' + ${tache.tache_id}}"
+                class="btn btn-danger"
+                >Delete</a
+              >
             </td>
-        </tr>
+          </tr>
         </tbody>
-    </table>
-</div>
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form class="row g-3">
-                    <div class="col-md-6">
-                        <label class="form-label">Title</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label">Description</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="col-12">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="gridCheck">
-                            <label class="form-check-label" for="gridCheck">
-                                Status
-                            </label>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" th:action="@{/save}" th:object="${Tache}">Confirm</button>
-            </div>
-        </div>
+      </table>
     </div>
-</div>
-</body>
-<script src="/Assets/bootstrap-5.3.2-dist/js/bootstrap.bundle.js"></script>
+    <div
+      class="modal"
+      style="
+        z-index: var(--depth-foreground);
+        --card-roomy-horizontal-padding: var(--spacing-xl);
+        visibility: visible;
+        opacity: 1;
+      "
+    >
+      <article
+        class="web-awesome-modal-content card roomy with-close modal-content"
+      >
+        <!---->
+        <div class="section text-left">
+          <div
+            class="header"
+            style="
+              margin: calc(var(--card-roomy-vertical-padding) * -1)
+                calc(var(--card-roomy-horizontal-padding) * -1)
+                var(--card-roomy-vertical-padding);
+              border-radius: var(--card-border-radius) var(--card-border-radius)
+                0 0;
+              overflow: hidden;
+            "
+          >
+            <img
+              src="https://img.fortawesome.com/1ce05b4b/webawesome-launch-modal-graphic.png"
+              alt="Announcing Web Awesome by Font Awesome"
+            />
+          </div>
+          <p class="size-lg margin-bottom-md">
+            <strong
+              >The biggest and best open-source library of web
+              components.</strong
+            >
+          </p>
+          <p class="margin-bottom-md">
+            We help designers and devs build better websites with the
+            customizability and ease Font Awesome is known for. Let's make the
+            web an awesomer place!
+          </p>
+          <a
+            href="https://www.kickstarter.com/projects/fontawesome/507565860?ref=c65aa6"
+            target="_blank"
+            class="button block size-lg margin-bottom-xs margin-top-xl"
+            style="--button-hover-background: #fd6f3b"
+            ><svg
+              aria-hidden="true"
+              focusable="false"
+              data-prefix="far"
+              data-icon="party-horn"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+              class="margin-right-3xs svg-inline--fa fa-party-horn fa-xl"
+            >
+              <path
+                fill="currentColor"
+                d="M32 32a32 32 0 1 1 64 0A32 32 0 1 1 32 32zM448 160a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm32 256a32 32 0 1 1 0 64 32 32 0 1 1 0-64zM167 153c-9.4-9.4-9.4-24.6 0-33.9l8.3-8.3c16.7-16.7 27.2-38.6 29.8-62.1l3-27.4C209.6 8.2 221.5-1.3 234.7 .1s22.7 13.3 21.2 26.5l-3 27.4c-3.8 34.3-19.2 66.3-43.6 90.7L201 153c-9.4 9.4-24.6 9.4-33.9 0zM359 311l8.2-8.3c24.4-24.4 56.4-39.8 90.7-43.6l27.4-3c13.2-1.5 25 8 26.5 21.2s-8 25-21.2 26.5l-27.4 3c-23.5 2.6-45.4 13.1-62.1 29.8L393 345c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9zM506.3 8.5c8.6 10.1 7.3 25.3-2.8 33.8l-10 8.5c-14.8 12.5-33.7 19.1-53 18.6c-16.6-.4-30.6 12.4-31.6 29l-1.8 30c-2.5 42.5-38.3 75.3-80.8 74.2c-7.6-.2-15 2.4-20.7 7.3l-10 8.5c-10.1 8.6-25.3 7.3-33.8-2.8s-7.3-25.3 2.8-33.8l10-8.5c14.8-12.5 33.7-19.1 53-18.6c16.6 .4 30.6-12.4 31.6-29l1.8-30c2.5-42.5 38.3-75.3 80.8-74.2c7.6 .2 15-2.4 20.7-7.3l10-8.5c10.1-8.6 25.3-7.3 33.8 2.8zM59.3 452.7l86.9-32.6L91.9 365.8 59.3 452.7zm200.1-75l-125-125-23.9 63.8 85.1 85.1 63.8-23.9zM98.1 212.6c8-21.4 36.4-27.6 52.6-11.4L310.9 361.3c16.2 16.2 10 44.6-11.4 52.6L43.3 510C18 519.4-7.4 494 2 468.8L98.1 212.6z"
+                class=""
+              ></path>
+            </svg>
+            Live on Kickstarter!
+          </a>
+        </div>
+        <!---->
+        <button
+          type="button"
+          aria-label="Close"
+          data-balloon-pos="left"
+          class="close margin-top-0"
+        >
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fad"
+            data-icon="circle-xmark"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+            class="svg-inline--fa fa-circle-xmark fa-lg"
+          >
+            <g class="fa-duotone-group">
+              <path
+                fill="currentColor"
+                d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"
+                class="fa-secondary"
+              ></path>
+              <path
+                fill="currentColor"
+                d="M209 175c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47z"
+                class="fa-primary"
+              ></path>
+            </g>
+          </svg>
+        </button>
+      </article>
+    </div>
+    <div
+      class="modal fade"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">
+              Modal title
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Title</label>
+                <input type="text" class="form-control" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Description</label>
+                <input type="text" class="form-control" />
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="gridCheck"
+                  />
+                  <label class="form-check-label" for="gridCheck">
+                    Status
+                  </label>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              th:action="@{/save}"
+              th:object="${Tache}"
+            >
+              Confirm
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/Assets/bootstrap-5.3.2-dist/js/bootstrap.bundle.js"></script>
 </html>
