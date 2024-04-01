@@ -2,6 +2,7 @@ package mg.inclusiv.cdan8.controller;
 
 import java.util.List;
 
+import mg.inclusiv.cdan8.Services.TacheService;
 import mg.inclusiv.cdan8.repository.TacheRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,10 +19,15 @@ public class TachesController {
     @Autowired
     TacheRepository tacheRepository;
 
+    @Autowired
+    TacheService tacheService;
+
+
+
     @GetMapping("")
     public String listTache(Model model) {
-        
-        //model.addAttribute("tacheList", );
+
+        model.addAttribute("tacheList",tacheService.getAll() );
         return "dashboard";
     }
 
