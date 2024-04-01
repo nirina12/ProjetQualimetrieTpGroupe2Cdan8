@@ -23,22 +23,22 @@ public class TacheRestController {
     @Autowired
     TacheRepository tacheRepository;
 
-    @GetMapping("list")
+    @GetMapping("list_tache")
     public List<Tache> listContact() {
         return tacheRepository.findAll();
     }
 
-    @PostMapping("add")
-    public Tache addContact(@RequestBody Tache contact) {
-        return tacheRepository.save(contact);
+    @PostMapping("add_tache")
+    public Tache addContact(@RequestBody Tache tache) {
+        return tacheRepository.save(tache);
     }
 
-    @PutMapping("update")
+    @PutMapping("update_tache")
     public Tache updateContact(@RequestBody Tache contact) {
         return tacheRepository.save(contact);
     }
 
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("delete_tache/{id}")
     public void deleteContact(@PathVariable Long id) {
         tacheRepository.deleteById(id);
     }

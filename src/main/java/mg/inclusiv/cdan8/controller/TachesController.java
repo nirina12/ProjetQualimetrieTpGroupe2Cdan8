@@ -18,10 +18,10 @@ public class TachesController {
     @Autowired
     TacheRepository tacheRepository;
 
-    @GetMapping("listTache")
+    @GetMapping("")
     public String listTache(Model model) {
-        List<Tache> tacheList = tacheRepository.findAll();
-        model.addAttribute("tacheList", tacheList);
+        
+        //model.addAttribute("tacheList", );
         return "dashboard";
     }
 
