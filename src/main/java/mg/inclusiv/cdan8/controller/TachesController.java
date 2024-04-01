@@ -21,7 +21,7 @@ public class TachesController {
     @GetMapping("")
     public String listTache(Model model) {
         
-        //model.addAttribute("tacheList", );
+        model.addAttribute("tacheList" );
         return "dashboard";
     }
 
