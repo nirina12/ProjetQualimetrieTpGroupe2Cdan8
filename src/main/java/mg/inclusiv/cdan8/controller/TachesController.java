@@ -37,6 +37,10 @@ public class TachesController {
     public void Modif(long id){
         tacheRepository.getById(id);
     }
+
+    @PostMapping("updateEtatTache")
+    public void modifierEtatTache(Tache tache) {tacheService.modifierEtatTache(tache);}
+    
     @PostMapping("/delete")
     public void del(long id){
         tacheRepository.deleteById(id);
