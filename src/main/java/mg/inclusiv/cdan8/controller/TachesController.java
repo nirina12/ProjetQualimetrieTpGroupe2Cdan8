@@ -21,7 +21,7 @@ public class TachesController {
 
     @Autowired
     TacheService tacheService;
-    
+
     @GetMapping("")
     public String listTache(Model model) {
 
