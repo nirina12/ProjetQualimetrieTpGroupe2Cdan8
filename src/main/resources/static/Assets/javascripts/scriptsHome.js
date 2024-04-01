@@ -82,15 +82,6 @@ function modifierOnclick(e) {
     //var statustache = rowData[1].querySelector('input[type="checkbox"]').checked
     inputTextnomtache.value = rowData[0].innerHTML.trim()
     statestatusTacheModal()
-  
-    // if (statustache == true) {
-    //     statusTacheModal.checked = true
-    //     statusTacheModal.value = "true"
-    // } else {
-    //     statusTacheModal.checked = false
-    //     statusTacheModal.value = "false"
-    // }
-    //statustache == true ? statusTache.checked = true : statusTache.checked = false
     idTacheModal.value = rowData[2].innerHTML
 
     //console.log(inputTextnomtache.value + idTacheModal.value + statustache)
