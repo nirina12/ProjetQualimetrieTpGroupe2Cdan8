@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import mg.inclusiv.cdan8.entity.Tache;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -36,8 +37,8 @@ public class TachesController {
         tacheRepository.save(tache);
     }
     @PostMapping("/update")
-    public void Modif(long id){
-        tacheRepository.getById(id);
+    public void Modif(@RequestBody Tache tache){
+        tacheService.modifier(tache);
     }
     @PostMapping("/delete")
     public void del(long id){
