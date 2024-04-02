@@ -25,7 +25,7 @@ public class TacheService {
     }
 
     public void modifierEtatTache (Tache tache){
-        tacheRepository.save(tache);
+        tacheRepository.updateEtatTache(tache.getTache_id(),tache.getStatus());
     }
     public void supprime (Long id){
         tacheRepository.deleteById(id);

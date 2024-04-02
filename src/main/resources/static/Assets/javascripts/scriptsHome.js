@@ -92,16 +92,10 @@ function modifierOnclick(e) {
 
 
 function modifierEtatTache (e) {
-    console.log(rowData)
     var rowData = e.parentElement.parentElement.children;
-    var idTache = document.getElementById("attribute1Input").value;
-    var etatTache = document.getElementById("attribute2Input").value;
-
-
     var data = {
-        idTache: 1,
-        etatTache: false
-
+        tache_id: rowData[0].innerHTML.trim(),
+        status: rowData[3].querySelector('input[type="checkbox"]').checked
     };
 
     var xhr = new XMLHttpRequest();
@@ -110,6 +104,7 @@ function modifierEtatTache (e) {
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             console.log(xhr.responseText);
+
         }
     };
     xhr.send(JSON.stringify(data));

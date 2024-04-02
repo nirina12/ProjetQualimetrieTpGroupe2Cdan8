@@ -30,8 +30,8 @@ public class TacheRestController {
     @PutMapping("updateEtatTache")
     public ResponseEntity<String> receiveData(@RequestBody Tache tache) {
 
-        System.out.println("Données reçues : " + tache);
-        return ResponseEntity.ok("Données reçues avec succès !" + tache);
+        tacheService.modifierEtatTache(tache);
+        return ResponseEntity.ok("Données reçues avec succès !");
     }
 
     @GetMapping("list_tache")
