@@ -61,7 +61,7 @@
         </thead>
         <tbody class="table-info table-active table-sub-heading-color">
           <tr th:each="tache : ${tacheList}">
-            <td th:text="${tache.tache_id}" hidden></td>
+            <td th:text="${tache.title}" ></td>
             <td th:text="${tache.title}"></td>
             <td th:text="${tache.description}"></td>
             <td>
