@@ -32,9 +32,11 @@ function statestatusTacheModal() {
     if (statusTacheModal.checked == true) {
         statusTacheModal.value = "true"
         labelStatusTache.innerHTML = "Terminé"
+        modifierEtatTache(statusTacheModal);
     } else {
         statusTacheModal.value = "false"
         labelStatusTache.innerHTML = "Non Terminé"
+        modifierEtatTache(statusTacheModal);
     }
 }
 
@@ -87,6 +89,30 @@ function modifierOnclick(e) {
     //console.log(inputTextnomtache.value + idTacheModal.value + statustache)
     changeModalAction("Modifier tâche")
 }
+
+
+function modifierEtatTache (e) {
+    var rowData = e.parentElement.parentElement.children;
+    var data = {
+        tache_id: rowData[0].innerHTML.trim(),
+        status: rowData[3].querySelector('input[type="checkbox"]').checked
+    };
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("PUT", "/api/tache/updateEtatTache", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(xhr.responseText);
+
+        }
+    };
+    xhr.send(JSON.stringify(data));
+}
+
+
+
+
 
 function changeModalAction(action) {
     btnModal.value = action

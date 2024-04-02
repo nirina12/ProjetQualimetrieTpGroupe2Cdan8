@@ -38,6 +38,10 @@ public class TachesController {
     public void Modif(@RequestBody Tache tache){
         tacheService.modifier(tache);
     }
+
+    @PostMapping("updateEtatTache")
+    public void modifierEtatTache(Tache tache) {tacheService.modifierEtatTache(tache);}
+    
     @PostMapping("/delete")
     public void del(long id){
         tacheRepository.deleteById(id);

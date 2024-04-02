@@ -23,7 +23,13 @@ public class TacheService {
     public void modifier (Tache tache){
         tacheRepository.save(tache);
     }
+
+    public void modifierEtatTache (Tache tache){
+        tacheRepository.updateEtatTache(tache.getTache_id(),tache.getStatus());
+    }
     public void supprime (Long id){
         tacheRepository.deleteById(id);
     }
+
+
   }
