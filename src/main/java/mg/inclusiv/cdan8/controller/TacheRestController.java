@@ -23,11 +23,11 @@ public class TacheRestController {
     @Autowired
     TacheRepository tacheRepository;
 
-    @GetMapping("list_tache")
+    @GetMapping("list_tache/{id}")
     public List<Tache> listContact() {
         return tacheRepository.findAll();
     }
-
+    
     @PostMapping("add_tache")
     public Tache addContact(@RequestBody Tache tache) {
         return tacheRepository.save(tache);

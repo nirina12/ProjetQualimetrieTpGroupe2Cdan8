@@ -27,6 +27,9 @@ import java.util.List;
 public class HomeController {
 
     @Autowired
+    private HttpSession session;
+    
+    @Autowired
     UtilisateurRepository utilisateurRepository;
 
     @RequestMapping("/")
@@ -38,11 +41,11 @@ public class HomeController {
 
     @PostMapping("/authentification")
     public RedirectView authentification(@RequestParam String mailUser,@RequestParam String password, HttpSession session,Model model ) {
-        System.out.println(mailUser+password);
+        
         Utilisateur currentUser = authentUser(mailUser, password);
-        System.out.println(currentUser);
+        // System.out.println(currentUser);
         if (currentUser!=null) {
-            session.setAttribute("user", currentUser.toString());
+            session.setAttribute("user", currentUser);
             model.addAttribute("utilisateur", currentUser.toString());
             return new RedirectView("/dashboardtache");
         }else{
@@ -65,12 +68,9 @@ public class HomeController {
         Utilisateur currentUser = null;
         if (userFounded!=null) {
             if (userFounded.getPassword().equals(password)) {
-                
                 return userFounded;
-
             }
         }
-        
         return currentUser;
     }
 

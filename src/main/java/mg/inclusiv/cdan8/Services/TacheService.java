@@ -14,8 +14,9 @@ public class TacheService {
     @Autowired
     TacheRepository tacheRepository;
 
-    public List<Tache> getAll(){
-        return tacheRepository.findAll();
+    public List<Tache> getAllByIdUser(Long idUser){
+        return tacheRepository.findAllTachesByUtilisateurId(idUser);
+        // return tacheRepository.findAll();
     }
     public void creer(Tache tache){
         tacheRepository.save(tache);
@@ -25,5 +26,6 @@ public class TacheService {
     }
     public void supprime (Long id){
         tacheRepository.deleteById(id);
+        
     }
   }
