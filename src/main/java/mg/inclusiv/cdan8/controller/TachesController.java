@@ -14,6 +14,7 @@ import mg.inclusiv.cdan8.entity.Tache;
 import mg.inclusiv.cdan8.entity.Utilisateur;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.servlet.http.HttpSession;
@@ -29,8 +30,6 @@ public class TachesController {
 
     @Autowired
     TacheService tacheService;
-
-    
 
     @GetMapping("")
     public String listTache(Model model) {
@@ -51,9 +50,13 @@ public class TachesController {
         tacheRepository.save(tache);
     }
     @PostMapping("/update")
-    public void Modif(long id){
-        tacheRepository.getById(id);
+    public void Modif(@RequestBody Tache tache){
+        tacheService.modifier(tache);
     }
+
+    @PostMapping("updateEtatTache")
+    public void modifierEtatTache(Tache tache) {tacheService.modifierEtatTache(tache);}
+    
     @PostMapping("/delete")
     public void del(long id){
         tacheRepository.deleteById(id);

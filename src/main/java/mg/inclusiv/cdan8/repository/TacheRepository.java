@@ -3,21 +3,28 @@ package mg.inclusiv.cdan8.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
 
+import org.springframework.data.jpa.repository.Modifying;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import mg.inclusiv.cdan8.entity.Tache;
 @Repository
+
 public interface TacheRepository extends JpaRepository<Tache, Long>  {
-    // @Query("FROM tache WHERE utilisateur_id = ?1")
-    // public List<Tache> getAllTacheUser(Long idutilisateur);
     
     @Query("SELECT t FROM Tache t WHERE t.utilisateur.id = :idUtilisateur")
     List<Tache> findAllTachesByUtilisateurId(@Param("idUtilisateur") Long idUtilisateur);
 
-    // @Query("SELECT * FROM Tache t WHERE t.utilisateur_id = :utilisateur_id")
-    // List<Tache> getAllTacheUser(@Param("utilisateur_id") Long idutilisateur);
-    //List<Tache> 
+    @Modifying
+    @Query("UPDATE Tache t SET t.status = :status WHERE t.tache_id = :tache_id")
+    void updateEtatTache(@Param("tache_id") long tache_id, @Param("status") boolean status);
+
     
 } 
+
+

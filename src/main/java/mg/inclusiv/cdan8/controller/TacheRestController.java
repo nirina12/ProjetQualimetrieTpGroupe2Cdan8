@@ -2,7 +2,9 @@ package mg.inclusiv.cdan8.controller;
 
 import java.util.List;
 
+import mg.inclusiv.cdan8.Services.TacheService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +25,17 @@ public class TacheRestController {
     @Autowired
     TacheRepository tacheRepository;
 
+    @Autowired
+    TacheService tacheService;
+    @PutMapping("updateEtatTache")
+    public ResponseEntity<String> receiveData(@RequestBody Tache tache) {
+
+        tacheService.modifierEtatTache(tache);
+        return ResponseEntity.ok("Données reçues avec succès !");
+    }
+
     @GetMapping("list_tache/{id}")
+
     public List<Tache> listContact() {
         return tacheRepository.findAll();
     }
