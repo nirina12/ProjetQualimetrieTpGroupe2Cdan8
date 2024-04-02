@@ -72,8 +72,8 @@ function supprimerOnclick(e) {
     var rowData = e.parentElement.parentElement.children;
     ajoutModifier.hidden = true
     supprTache.hidden = false
-    labelSuppr.innerHTML = rowData[0].innerHTML.trim()
-    idTacheModal.value = rowData[2].innerHTML
+    labelSuppr.innerHTML = rowData[1].innerHTML.trim()
+    idTacheModal.value = rowData[0].innerHTML
     changeModalAction("Supprimer tâche")
 }
 function modifierOnclick(e) {
@@ -82,9 +82,9 @@ function modifierOnclick(e) {
     ajoutModifier.hidden = false
     supprTache.hidden = true
     //var statustache = rowData[1].querySelector('input[type="checkbox"]').checked
-    inputTextnomtache.value = rowData[0].innerHTML.trim()
+    inputTextnomtache.value = rowData[1].innerHTML.trim()
     statestatusTacheModal()
-    idTacheModal.value = rowData[2].innerHTML
+    idTacheModal.value = rowData[0].innerHTML
 
     //console.log(inputTextnomtache.value + idTacheModal.value + statustache)
     changeModalAction("Modifier tâche")
