@@ -34,10 +34,10 @@ public class TacheRestController {
         return ResponseEntity.ok("Données reçues avec succès !");
     }
 
-    @GetMapping("list_tache/{id}")
-    public List<Tache> listContact() {
-        return tacheRepository.findAll();
-    }
+    // @GetMapping("list_tache/{id}")
+    // public String listContact() {
+    //     return tacheRepository.findAll();
+    // }
     
     @PostMapping("add_tache")
     public Tache addContact(@RequestBody Tache tache) {
