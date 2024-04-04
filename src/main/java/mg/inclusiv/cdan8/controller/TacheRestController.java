@@ -14,14 +14,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.servlet.http.HttpSession;
 import mg.inclusiv.cdan8.entity.Tache;
+import mg.inclusiv.cdan8.entity.Utilisateur;
 import mg.inclusiv.cdan8.repository.TacheRepository;
 
 
 @RestController
 @RequestMapping("/api/tache")
 public class TacheRestController {
-    
+    @Autowired
+    private HttpSession session;
+
     @Autowired
     TacheRepository tacheRepository;
 
@@ -34,23 +38,40 @@ public class TacheRestController {
         return ResponseEntity.ok("Données reçues avec succès !");
     }
 
-    @GetMapping("list_tache/{id}")
+    @GetMapping("list_tache")
     public List<Tache> listContact() {
-        return tacheRepository.findAll();
+        if (session != null && session.getAttribute("user") != null){
+            Utilisateur currentUser = (Utilisateur) session.getAttribute("user");
+            return tacheService.getAllByIdUser(currentUser.getUtilisateur_id()) ;
+        }else{
+            System.out.println("non");
+            return null;
+        }
+        
     }
     
     @PostMapping("add_tache")
-    public Tache addContact(@RequestBody Tache tache) {
-        return tacheRepository.save(tache);
+    public ResponseEntity<String> addContact(@RequestBody Tache tache) {
+        Utilisateur currentUser = (Utilisateur) session.getAttribute("user");
+        tache.setUtilisateur(currentUser);
+        tache.setStatus(false);
+        //System.out.println(tache);
+        tacheService.creer(tache);
+        return ResponseEntity.ok("Données reçues avec succès !");
     }
 
     @PutMapping("update_tache")
-    public Tache updateContact(@RequestBody Tache contact) {
-        return tacheRepository.save(contact);
+    public ResponseEntity<String> updateContact(@RequestBody Tache tache) {
+        Utilisateur currentUser = (Utilisateur) session.getAttribute("user");
+        tache.setUtilisateur(currentUser);
+
+        tacheService.modifier(tache);
+        return ResponseEntity.ok("Données reçues avec succès !");
     }
 
     @DeleteMapping("delete_tache/{id}")
-    public void deleteContact(@PathVariable Long id) {
+    public ResponseEntity<String> deleteContact(@PathVariable Long id) {
         tacheRepository.deleteById(id);
+        return ResponseEntity.ok("Données reçues avec succès !");
     }
 }
