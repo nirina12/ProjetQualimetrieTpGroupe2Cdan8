@@ -14,7 +14,7 @@ const btnActionPost = document.querySelectorAll("tr td button");
 const btnModifier = document.querySelectorAll(".btnModifier");
 const btnSupprimer = document.querySelectorAll("tr td button.btnSupprimer");
 
-const statusTacheModal = document.querySelector(".checkStatusTache");
+var statusTacheModal = document.querySelector("#checkStatusTache");
 
 const labelSuppr = document.querySelector("#confSuppr");
 
@@ -59,6 +59,7 @@ $.ajax({
         var row = $("<tr>").appendTo(tbody);
         var status = item.status; // Supposons que vous avez une variable contenant la valeur de l'état
         var checkbox = $("<input type='checkbox' />");
+        // checkbox.addClass("checkStatusTache")
         if (status) {checkbox.prop("checked", true);}
         $("<td>").text(item.title).appendTo(row);
         $("<td>").text(item.description).appendTo(row);
@@ -176,7 +177,7 @@ btnModal.onclick = () => {
       location.reload(true);
       break;
     case "Modifier tâche":
-      console.log(statusTacheModal.checked);
+      //console.log(statusTacheModal.checked);
       var data = {
         tache_id: idTacheModal.value,
         title: titreinputModal.value,
