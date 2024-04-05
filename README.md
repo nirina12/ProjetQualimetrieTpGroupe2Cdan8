@@ -26,18 +26,40 @@ o	Licence
 L’objectif de cette application de gestion des tâches est d’offrir une solution centralisée pour organiser, prioriser, suivre et gérer efficacement les tâches et les projets, ce qui aide les utilisateurs à être plus productifs et plus efficaces dans leur travail.
 
 
+![Capture_decran_2024-04-04_184214.png](images%2FCapture_decran_2024-04-04_184214.png)
+
+
+
 
  
 Les fonctionnalités existantes dans cette application sont :
 
-
 o	Ajout de tâches : permet aux utilisateurs de créer et d’ajouter de nouvelles tâches à accomplir à la liste en spécifiant leurs titres et leurs descriptions.
+
+
+![Capture_decran_2024-04-04_194913.png](images%2FCapture_decran_2024-04-04_194913.png)
+
+
 
 o	Modification de tâches : offre aux utilisateurs la flexibilité nécessaire pour ajuster et mettre à jour leurs tâches en fonction des changements de priorités, des évolutions de projets ou des nouvelles informations.
 
+
+![Capture_decran_2024-04-04_194952.png](images%2FCapture_decran_2024-04-04_194952.png)
+
+
+
 o	Marquage de tâches comme terminées : offre aux utilisateurs la possibilité de cocher le statut des tâches lorsqu'elles sont accomplies.
 
+
+
+![Capture_decran_2024-04-04_194935.png](images%2FCapture_decran_2024-04-04_194935.png)
+
+
+
+
 o	Suppression de tâches : permet aux utilisateurs de supprimer les tâches qu’ils ne souhaitent plus voir dans la liste.
+
+![Capture_decran_2024-04-04_195017.png](images%2FCapture_decran_2024-04-04_195017.png)
 
 
 Les principales utilités de cette application sont : 
@@ -69,10 +91,10 @@ o	Saisissez la commande : « mvn -B package »
 Cette commande installe les dépendances suivantes :
 
  
- 
- 
- 
-
+ ![Capture_decran_2024-04-04_212527.png](images%2FCapture_decran_2024-04-04_212527.png)
+ ![Capture_decran_2024-04-04_212545.png](images%2FCapture_decran_2024-04-04_212545.png)
+ ![Capture_decran_2024-04-04_212603.png](images%2FCapture_decran_2024-04-04_212603.png)
+![Capture_decran_2024-04-04_212627.png](images%2FCapture_decran_2024-04-04_212627.png)
 
 
 o	Lancez l’application puis saisissez l’adresse localhost : 8080 dans votre navigateur.
