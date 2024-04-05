@@ -12,20 +12,26 @@ import java.util.List;
 @Transactional
 public class TacheService {
     @Autowired
-    private TacheRepository tacheRepository;
+    TacheRepository tacheRepository;
 
-    public List<Tache> tacheList(){
-        return tacheRepository.findAll();
+    public List<Tache> getAllByIdUser(Long idUser){
+        return tacheRepository.findAllTachesByUtilisateurId(idUser);
+        // return tacheRepository.findAll();
     }
-    public void save(Tache tache){
+    public void creer(Tache tache){
         tacheRepository.save(tache);
     }
-    public Tache get(long id){
-        return  tacheRepository.findById(id).get();
+    public void modifier (Tache tache){
+        tacheRepository.save(tache);
     }
-    public void delete(long id){
+
+    public void modifierEtatTache (Tache tache){
+        tacheRepository.updateEtatTache(tache.getTache_id(),tache.getStatus());
+    }
+    public void supprime (Long id){
         tacheRepository.deleteById(id);
+        
     }
 
 
-}
+  }

@@ -12,16 +12,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 public class Utilisateur {
-    private static final long serialVersionUID = 1L;
+    //private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @Column(name = "nom")
-    private String nom;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long utilisateur_id;
     @Column
-    private String prenom;
+    private String name;
     @Column
-    private String mail;
+    private String lastname;
+    @Column
+    private String email;
     @Column
     private String password;
     
