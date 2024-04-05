@@ -6,9 +6,7 @@ const bodyModal = document.querySelector("#modalBodyTache");
 const idTacheModal = document.querySelector("#inputTextIdTache");
 const inputTextnomtache = document.querySelector("#inputTextnomtache");
 const titreinputModal = document.querySelector("#titreinputModal");
-const descriptiontextAreaTacheModal = document.querySelector(
-  "#descriptiontextAreaTacheModal"
-);
+const descriptiontextAreaTacheModal = document.querySelector("#descriptiontextAreaTacheModal");
 
 const btnActionPost = document.querySelectorAll("tr td button");
 const btnModifier = document.querySelectorAll(".btnModifier");

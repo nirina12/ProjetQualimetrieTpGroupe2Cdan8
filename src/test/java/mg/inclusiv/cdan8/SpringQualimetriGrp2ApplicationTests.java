@@ -9,5 +9,9 @@ class SpringQualimetriGrp2ApplicationTests {
 	@Test
 	void contextLoads() {
 	}
+	@Test
+	void listTacheTest(){
+		
+	}
 
 }
