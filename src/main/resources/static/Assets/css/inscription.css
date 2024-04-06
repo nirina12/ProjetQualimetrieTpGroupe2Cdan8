@@ -1,0 +1,43 @@
+
+/* #sectionlogin */
+#sectionlogin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 85vh;
+  }
+  #sectionlogin .card.text-start {
+    padding: 30px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.4);
+  }
+  #sectionlogin .card.text-start img {
+    width: 100px;
+    margin-bottom: 10px;
+  }
+  #sectionlogin .card.text-start form {
+    width: 23vw;
+  }
+  
+  #sectionlogin .Notification-error {
+    color: #dc3545;
+  }
+  
+  /* #sectioninscription */
+  #sectioninscription {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 85vh;
+  }
+  #sectioninscription .card.text-start {
+    padding: 30px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.4);
+  }
+  #sectioninscription .card.text-start form {
+    width: 40vw;
+  }
+  
