@@ -10,4 +10,7 @@ class SpringQualimetriGrp2ApplicationTests {
 	void contextLoads() {
 	}
 
+
+
+
 }
