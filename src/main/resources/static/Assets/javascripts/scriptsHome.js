@@ -142,7 +142,6 @@ btnModal.onclick = () => {
         title: titreinputModal.value,
         description: descriptiontextAreaTacheModal.value,
       };
-
       var xhr = new XMLHttpRequest();
       xhr.open("POST", "/api/tache/add_tache", true);
       xhr.setRequestHeader("Content-Type", "application/json");
@@ -172,7 +171,6 @@ btnModal.onclick = () => {
       location.reload(true);
       break;
     case "Modifier tâche":
-      //console.log(statusTacheModal.checked);
       var data = {
         tache_id: idTacheModal.value,
         title: titreinputModal.value,
@@ -255,6 +253,7 @@ function supprimerOnclick(e) {
   idTacheModal.value = rowData[0].innerHTML;
   changeModalAction("Supprimer tâche");
 }
+
 function modifierOnclick(e) {
   var rowData = e.parentElement.parentElement.children;
   divStatusTache.hidden = false;
