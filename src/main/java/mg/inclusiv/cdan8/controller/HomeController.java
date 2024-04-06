@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import mg.inclusiv.cdan8.Services.UtilisateurService;
 import mg.inclusiv.cdan8.entity.Utilisateur;
 import mg.inclusiv.cdan8.repository.UtilisateurRepository;
 
@@ -32,6 +33,9 @@ public class HomeController {
     @Autowired
     UtilisateurRepository utilisateurRepository;
 
+    @Autowired
+    UtilisateurService utilisateurService;
+
     @RequestMapping("/")
     public String home(Model model) {
         //String message = "Hello, Thymeleaf!";
@@ -42,7 +46,7 @@ public class HomeController {
     @PostMapping("/authentification")
     public RedirectView authentification(@RequestParam String mailUser,@RequestParam String password, HttpSession session,Model model ) {
         
-        Utilisateur currentUser = authentUser(mailUser, password);
+        Utilisateur currentUser = utilisateurService.authentUser(mailUser, password);
         // System.out.println(currentUser);
         if (currentUser!=null) {
             session.setAttribute("user", currentUser);
@@ -61,18 +65,7 @@ public class HomeController {
         return new RedirectView("/") ;
     }
 
-    private Utilisateur authentUser(String emailUser, String password){
-        //List <Utilisateur> users= utilisateurRepository.authentificationUser(emailUser, password);
-        Utilisateur userFounded = utilisateurRepository.findByEmail(emailUser);
-        System.out.println(userFounded.toString());
-        Utilisateur currentUser = null;
-        if (userFounded!=null) {
-            if (userFounded.getPassword().equals(password)) {
-                return userFounded;
-            }
-        }
-        return currentUser;
-    }
+    
 
     @GetMapping ("/inscription")
     public String inscription(Model model,Utilisateur utilisateur){
@@ -89,7 +82,8 @@ public class HomeController {
             System.out.println("oui");
             model.addAttribute("message","Succés///");
 
-            utilisateurRepository.save(utilisateur);
+            utilisateurService.signupUtilisateur(utilisateur);
+            // utilisateurRepository.save(utilisateur);
             //utilisateurRepository.inscriptionUtilisateur(utilisateur.getEmail(), utilisateur.getLastname(), utilisateur.getName(), utilisateur.getPassword());
             ;  //model.addAttribute("utilisateur", currentUser.toString());
             return new RedirectView("/");
