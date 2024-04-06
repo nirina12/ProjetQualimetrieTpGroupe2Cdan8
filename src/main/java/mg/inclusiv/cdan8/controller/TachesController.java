@@ -38,11 +38,8 @@ public class TachesController {
             model.addAttribute("tacheList",tacheService.getAllByIdUser(currentUser.getUtilisateur_id()) );
             return "dashboard";
         }else{
-            System.out.println("non");
             return "/";
         }
-
-        
     }
 
     @PostMapping("/save")

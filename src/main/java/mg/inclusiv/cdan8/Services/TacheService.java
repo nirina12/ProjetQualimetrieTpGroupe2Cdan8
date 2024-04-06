@@ -16,7 +16,6 @@ public class TacheService {
 
     public List<Tache> getAllByIdUser(Long idUser){
         return tacheRepository.findAllTachesByUtilisateurId(idUser);
-        // return tacheRepository.findAll();
     }
     public void creer(Tache tache){
         tacheRepository.save(tache);
@@ -32,6 +31,4 @@ public class TacheService {
         tacheRepository.deleteById(id);
         
     }
-
-
   }

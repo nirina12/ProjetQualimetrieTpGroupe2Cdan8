@@ -21,7 +21,6 @@ import mg.inclusiv.cdan8.Services.UtilisateurService;
 import mg.inclusiv.cdan8.entity.Utilisateur;
 import mg.inclusiv.cdan8.repository.UtilisateurRepository;
 
-
 import java.util.List;
 
 @Controller
@@ -38,16 +37,13 @@ public class HomeController {
 
     @RequestMapping("/")
     public String home(Model model) {
-        //String message = "Hello, Thymeleaf!";
         model.addAttribute("utilisateur", new Utilisateur());
         return "index";
     }
 
     @PostMapping("/authentification")
-    public RedirectView authentification(@RequestParam String mailUser,@RequestParam String password, HttpSession session,Model model ) {
-        
+    public RedirectView authentification(@RequestParam String mailUser,@RequestParam String password, HttpSession session,Model model ) {        
         Utilisateur currentUser = utilisateurService.authentUser(mailUser, password);
-        // System.out.println(currentUser);
         if (currentUser!=null) {
             session.setAttribute("user", currentUser);
             model.addAttribute("utilisateur", currentUser.toString());
@@ -58,37 +54,27 @@ public class HomeController {
         }
     }
 
+    // Invalider la session de l'utilisateur
     @GetMapping("/logout")
     public RedirectView logout(HttpSession session) {
-        // Invalider la session de l'utilisateur
+        
         session.invalidate();
         return new RedirectView("/") ;
     }
 
-    
-
     @GetMapping ("/inscription")
     public String inscription(Model model,Utilisateur utilisateur){
-        model.addAttribute("message","Bonjour");
         return "inscription";
     }
 
     @PostMapping ("/inscriptionUtilisateur")
     public RedirectView inscription(@ModelAttribute Utilisateur utilisateur,@RequestParam String confirmPassword, Model model ) {
-        //Utilisateur currentUser = authentUser(mailUser, password);
-        System.out.println(utilisateur.toString());
-        System.out.println(confirmPassword);
+        
         if (utilisateur.getPassword().equals(confirmPassword)) {
-            System.out.println("oui");
             model.addAttribute("message","Succés///");
-
             utilisateurService.signupUtilisateur(utilisateur);
-            // utilisateurRepository.save(utilisateur);
-            //utilisateurRepository.inscriptionUtilisateur(utilisateur.getEmail(), utilisateur.getLastname(), utilisateur.getName(), utilisateur.getPassword());
-            ;  //model.addAttribute("utilisateur", currentUser.toString());
             return new RedirectView("/");
         }else{
-            System.out.println("non");
             model.addAttribute("NotificationError", "Erreur D'authentification");
 
             return new RedirectView("/");

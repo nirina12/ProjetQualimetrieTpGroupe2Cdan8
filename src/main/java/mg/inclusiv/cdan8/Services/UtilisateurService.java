@@ -16,22 +16,13 @@ public class UtilisateurService {
     public void signupUtilisateur(Utilisateur utilisateur){
         utilisateurRepository.save(utilisateur);
     }
-
     public Utilisateur authentUser(String emailUser, String password){
-        //List <Utilisateur> users= utilisateurRepository.authentificationUser(emailUser, password);
         Utilisateur userFounded = utilisateurRepository.findByEmail(emailUser);
-        System.out.println(userFounded.toString());
         Utilisateur currentUser = null;
-        if (userFounded!=null) {
-            if (userFounded.getPassword().equals(password)) {
+        if (userFounded!=null && (userFounded.getPassword().equals(password))) {
                 return userFounded;
-            }
+            
         }
         return currentUser;
     }
-
-    
-
-
-    
 }

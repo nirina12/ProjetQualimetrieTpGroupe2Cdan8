@@ -33,7 +33,6 @@ public class TacheRestController {
     TacheService tacheService;
     @PutMapping("updateEtatTache")
     public ResponseEntity<String> receiveData(@RequestBody Tache tache) {
-
         tacheService.modifierEtatTache(tache);
         return ResponseEntity.ok("Données reçues avec succès !");
     }
@@ -44,7 +43,7 @@ public class TacheRestController {
             Utilisateur currentUser = (Utilisateur) session.getAttribute("user");
             return tacheService.getAllByIdUser(currentUser.getUtilisateur_id()) ;
         }else{
-            System.out.println("non");
+            
             return null;
         }
         
@@ -55,7 +54,6 @@ public class TacheRestController {
         Utilisateur currentUser = (Utilisateur) session.getAttribute("user");
         tache.setUtilisateur(currentUser);
         tache.setStatus(false);
-        //System.out.println(tache);
         tacheService.creer(tache);
         return ResponseEntity.ok("Données reçues avec succès !");
     }

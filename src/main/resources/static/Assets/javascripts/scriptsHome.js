@@ -1,5 +1,6 @@
 const btnAjoutTache = document.querySelector("#btnajoutTache");
 
+/* element du modal*/
 const btnModal = document.querySelector("#btnModal");
 const headerModal = document.querySelector("#exampleModalLabel");
 const bodyModal = document.querySelector("#modalBodyTache");
@@ -7,12 +8,14 @@ const idTacheModal = document.querySelector("#inputTextIdTache");
 const inputTextnomtache = document.querySelector("#inputTextnomtache");
 const titreinputModal = document.querySelector("#titreinputModal");
 const descriptiontextAreaTacheModal = document.querySelector("#descriptiontextAreaTacheModal");
+var statusTacheModal = document.querySelector("#checkStatusTache");
 
+/*Element du tableau */
 const btnActionPost = document.querySelectorAll("tr td button");
 const btnModifier = document.querySelectorAll(".btnModifier");
 const btnSupprimer = document.querySelectorAll("tr td button.btnSupprimer");
 
-var statusTacheModal = document.querySelector("#checkStatusTache");
+
 
 const labelSuppr = document.querySelector("#confSuppr");
 
@@ -32,7 +35,7 @@ $.ajax({
   type: "GET",
   dataType: "json",
   success: function (data) {
-    //console.log(data[0])
+    
     var jsonData = data;
     $("#tableContent").empty();
     var columnCount = 3; // Par défaut, 3 colonnes
@@ -55,16 +58,15 @@ $.ajax({
       var tbody = $("<tbody>").appendTo(table);
       $.each(data, function (index, item) {
         var row = $("<tr>").appendTo(tbody);
-        var status = item.status; // Supposons que vous avez une variable contenant la valeur de l'état
+        var status = item.status; 
         var checkbox = $("<input type='checkbox' />");
-        // checkbox.addClass("checkStatusTache")
+        
         if (status) {checkbox.prop("checked", true);}
         $("<td>").text(item.title).appendTo(row);
         $("<td>").text(item.description).appendTo(row);
         $("<td>").append(checkbox).appendTo(row);
         $("<td>").text(item.tache_id).appendTo(row).attr("hidden","hidden");
         
-        // row.addClass("table-secondary")
         row.css("background-color", "gray")
 
         checkbox.on("change", function(event){
@@ -80,7 +82,7 @@ $.ajax({
               xhr.setRequestHeader("Content-Type", "application/json");
               xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
-                  //console.log(xhr.responseText);
+                  console.log(xhr.responseText);
                 }
               };
               xhr.send(JSON.stringify(data));
@@ -245,8 +247,6 @@ for (let i = 0; i < btnSupprimer.length; i++) {
 btnAjoutTache.onclick = () => {
   btnModal.value = "Ajouter tâche";
   headerModal.textContent = "Ajouter tâche";
-  //   bodyModal.textContent = "Ajouter tâche";
-  //inputTextnomtache.value = "";
   divStatusTache.hidden = true;
   ajoutModifier.hidden = false;
   supprTache.hidden = true;
@@ -265,13 +265,11 @@ function modifierOnclick(e) {
   divStatusTache.hidden = false;
   ajoutModifier.hidden = false;
   supprTache.hidden = true;
-  //var statustache = rowData[1].querySelector('input[type="checkbox"]').checked
   titreinputModal.value = rowData[1].innerHTML.trim();
   descriptiontextAreaTacheModal.value = rowData[2].innerHTML.trim();
   statestatusTacheModal();
   idTacheModal.value = rowData[0].innerHTML;
 
-  //console.log(inputTextnomtache.value + idTacheModal.value + statustache)
   changeModalAction("Modifier tâche");
 }
 
@@ -287,7 +285,6 @@ function modifierEtatTache(e) {
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
-      //console.log(xhr.responseText);
     }
   };
   xhr.send(JSON.stringify(data));
@@ -296,5 +293,5 @@ function modifierEtatTache(e) {
 function changeModalAction(action) {
   btnModal.value = action;
   headerModal.textContent = action;
-  //bodyModal.textContent = action;
+  
 }
