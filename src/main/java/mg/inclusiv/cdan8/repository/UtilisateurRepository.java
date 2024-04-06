@@ -7,6 +7,5 @@ import mg.inclusiv.cdan8.entity.Utilisateur;
 
 @Repository
 public interface UtilisateurRepository extends JpaRepository<Utilisateur,Long> {
-    
     Utilisateur findByEmail(String email);
 }

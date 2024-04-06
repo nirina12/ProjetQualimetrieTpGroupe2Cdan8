@@ -3,6 +3,7 @@ package mg.inclusiv.cdan8.Services;
 import mg.inclusiv.cdan8.entity.Tache;
 import mg.inclusiv.cdan8.repository.TacheRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,6 +30,6 @@ public class TacheService {
     }
     public void supprime (Long id){
         tacheRepository.deleteById(id);
-        
     }
+    
   }

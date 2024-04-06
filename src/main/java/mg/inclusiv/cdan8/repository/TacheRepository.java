@@ -13,8 +13,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import mg.inclusiv.cdan8.entity.Tache;
-@Repository
 
+@Repository
 public interface TacheRepository extends JpaRepository<Tache, Long>  {
     
     @Query("SELECT t FROM Tache t WHERE t.utilisateur.id = :idUtilisateur")

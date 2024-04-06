@@ -15,10 +15,7 @@ const btnActionPost = document.querySelectorAll("tr td button");
 const btnModifier = document.querySelectorAll(".btnModifier");
 const btnSupprimer = document.querySelectorAll("tr td button.btnSupprimer");
 
-
-
 const labelSuppr = document.querySelector("#confSuppr");
-
 const divStatusTache = document.getElementById("divStatusTache");
 
 const ajoutModifier = document.querySelector("#AjoutModifier");
@@ -26,7 +23,6 @@ const supprTache = document.querySelector("#SupprTache");
 const labelStatusTache = document.querySelector("#labelStatusTache");
 
 const ligneTable = document.getElementsByName("ligneTable");
-
 const currentUser = document.querySelector("#currentUser");
 
 /* INIT LIST TACHES  */
@@ -108,8 +104,7 @@ $.ajax({
           divStatusTache.hidden = false;
           ajoutModifier.hidden = false;
           supprTache.hidden = true;
-          // Votre code à exécuter lorsque le lien est cliqué
-          // console.log(checkBoxEtatTache)
+          
           changeModalAction("Modifier tâche");
         });
 
