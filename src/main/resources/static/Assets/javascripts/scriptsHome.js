@@ -111,7 +111,7 @@ $.ajax({
         var supprimerBtn = $("<a>")
           .addClass("btn btn-danger")
           .text("Supprimer")
-          .attr("href", "/delete/" + item.tache_id) // Remplacez "lien_de_suppression" par votre URL de suppression
+          .attr("href", "/delete/" + item.tache_id) 
           .attr("data-bs-toggle", "modal")
           .attr("data-bs-target", "#staticBackdrop")
           .appendTo(actionCell);
@@ -224,6 +224,7 @@ function statusModalChange() {
   }
 }
 
+// Parcour des boutons pour trouver l'id de le bouton a été selectionné
 for (let i = 0; i < btnModifier.length; i++) {
   btnModifier[i].onclick = () => {
     //console.log("modifier")
@@ -237,6 +238,7 @@ for (let i = 0; i < btnSupprimer.length; i++) {
   };
 }
 
+//les fonctions pour chaque type d'action
 btnAjoutTache.onclick = () => {
   btnModal.value = "Ajouter tâche";
   headerModal.textContent = "Ajouter tâche";
@@ -284,6 +286,7 @@ function modifierEtatTache(e) {
   xhr.send(JSON.stringify(data));
 }
 
+// action qui se produit selon l'action et change le text qui s'affiche
 function changeModalAction(action) {
   btnModal.value = action;
   headerModal.textContent = action;

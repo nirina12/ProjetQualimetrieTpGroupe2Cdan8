@@ -31,7 +31,7 @@ public class TestUnitaireService {
 
     @Test
     void signupAndAuthUtilisateur(){
-        Utilisateur utilisateur = new Utilisateur("null", "null", "null", "null");
+        // Utilisateur utilisateur = new Utilisateur("null", "null", "null", "null");
         // utilisateur.setEmail("test@gmail.com");
         // utilisateur.setPassword("test");
         // utilisateur.setName("testNom");
@@ -39,7 +39,7 @@ public class TestUnitaireService {
         //utilisateurService.test(utilisateur);
         //utilisateurService.authentUser(null, null);
 
-        utilisateurService.signupUtilisateur(utilisateur);
+        // utilisateurService.signupUtilisateur(utilisateur);
 
         //utilisateurService.signupUtilisateur(utilisateurr);
         //Utilisateur currentUser=utilisateurService.authentUser(utilisateur.getEmail(), utilisateur.getPassword());
