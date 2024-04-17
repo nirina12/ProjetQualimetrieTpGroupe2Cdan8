@@ -43,10 +43,8 @@ public class TacheRestController {
             Utilisateur currentUser = (Utilisateur) session.getAttribute("user");
             return tacheService.getAllByIdUser(currentUser.getUtilisateur_id()) ;
         }else{
-            
             return null;
-        }
-        
+        }   
     }
     
     @PostMapping("add_tache")
